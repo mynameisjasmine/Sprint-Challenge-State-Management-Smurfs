@@ -17,3 +17,18 @@ export const fetchList = () => dispatch => {
 }
 
 
+export const POSTING_DATA = 'POSTING_DATA';
+export const POST_COMPLETE = 'POST_COMPLETE';
+export const POST_FAILURE =  'POST_FAILURE';
+
+export const postList = (smurf) => dispatch => {
+    dispatch({ type: POSTING_DATA })
+
+    axios.post('http://localhost:3333/smurfs', smurf)
+    // .then(res => console.log(res))
+.then(res => dispatch({ type: POST_COMPLETE, payload: res.data}))
+.catch(err => dispatch({ type: POST_FAILURE, payload: err.response}))
+
+}
+
+

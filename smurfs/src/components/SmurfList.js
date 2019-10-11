@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import Smurfs from './Smurfs';
-import { fetchList } from '../actions/index';
+import { fetchList, postList } from '../actions/index';
 import { connect } from 'react-redux';
 
 const SmurfList = props => {
- 
+ console.log('SMURFLIST', props);
 useEffect(() => {
 props.fetchList()
 }, []);
@@ -27,8 +27,9 @@ const mapStateToProps = state => {
  return {
   data: state.data,
   isFetching: state.isFetching,
+  isPosting: state.isPosting,
   error: state.error
  };
 };
 
-export default connect(mapStateToProps, {fetchList})(SmurfList);
+export default connect(mapStateToProps, {fetchList, postList })(SmurfList);
