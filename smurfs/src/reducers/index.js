@@ -1,4 +1,5 @@
 import React from 'react';
+import { FETCHING_DATA, FETCH_COMPLETE, FETCH_FAILURE } from '../actions/index'
 
 const initialState = {
  data: [],
@@ -10,8 +11,29 @@ const initialState = {
 
 const reducer = (state=initialState, action) => {
     switch(action.type) {
+    case FETCHING_DATA:
+    return {
+     ...state,
+     isFetching: true,
+     error: ''
+    }
+     
+    case FETCH_COMPLETE:
+    return {
+     ...state,
+     isFetching: false,
+     error: '',
+     data: action.payload
+    }
 
-     default: 
+    case FETCH_FAILURE:
+     return {
+     ...state,
+     error: action.payload,
+     isFetching: false
+     }
+    
+    default: 
      return state
     }
 } 
