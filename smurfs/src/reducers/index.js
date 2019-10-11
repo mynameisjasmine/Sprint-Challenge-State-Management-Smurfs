@@ -2,10 +2,21 @@ import React from 'react';
 import { FETCHING_DATA, FETCH_COMPLETE, FETCH_FAILURE } from '../actions/index'
 
 const initialState = {
- data: [],
- isFetching: false,
+ data: [
+ 
+    {
+  name: 'Vanity',
+  age: 200,
+  height: '5cm',
+  id: 0   
+ }
+ 
+],
+ 
+isFetching: false,
  error: ''
 
+  
 };
 
 
@@ -19,7 +30,14 @@ const reducer = (state=initialState, action) => {
     }
      
     case FETCH_COMPLETE:
+    const newSmurf = {
+     id: Date.now(),
+     name: '',
+     age: 200,
+     height: ''
+    }
     return {
+        
      ...state,
      isFetching: false,
      error: '',

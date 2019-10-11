@@ -9,9 +9,9 @@ export const fetchList = () => dispatch => {
     dispatch({ type: FETCHING_DATA })
 
 
- axios.get(`http://localhost:3333`)
-.then(res => console.log(res))
-// .then(res => dispatch({ type: FETCH_COMPLETE, payload: res.data}))
+ axios.get(`http://localhost:3333/smurfs`)
+// .then(res => console.log(res))
+.then(res => dispatch({ type: FETCH_COMPLETE, payload: res.data}))
 .catch(err => dispatch({ type: FETCH_FAILURE, payload: err.response}))
 
 }
