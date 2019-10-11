@@ -7,6 +7,7 @@ const SmurfList = props => {
  console.log('SMURFLIST', props);
 useEffect(() => {
 props.fetchList()
+
 }, []);
 
 if(props.isFetching) {
@@ -14,12 +15,15 @@ return <h2>Loading...</h2>
 }
 
  return (
+ <> 
   <div>
-  {props.error && <p>{props.error}</p>}
+  {/* {props.error && <p>{props.error}</p>} */}
   {props.data.map(items => (
-    <Smurfs key={items.id} items={items}/>   
+    <Smurfs key={items.id} items={items}/> 
+
   ))}
   </div>
+  </>
 )
 };
 
@@ -32,4 +36,4 @@ const mapStateToProps = state => {
  };
 };
 
-export default connect(mapStateToProps, {fetchList, postList })(SmurfList);
+export default connect(mapStateToProps, { fetchList, postList })(SmurfList);
