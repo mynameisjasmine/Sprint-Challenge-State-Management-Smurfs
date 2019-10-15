@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Smurfs from './Smurfs';
-import { fetchList, postList } from '../actions/index';
+import { fetchList } from '../actions/index';
 import { connect } from 'react-redux';
 
 const SmurfList = props => {
@@ -9,7 +9,7 @@ useEffect(() => {
 props.fetchList()
 
 }, []);
-
+console.log('DATA 2',props.data);
 if(props.isFetching) {
 return <h2>Loading...</h2>
 }
@@ -18,7 +18,8 @@ return <h2>Loading...</h2>
  <> 
   <div>
   {/* {props.error && <p>{props.error}</p>} */}
-  {props.data.map(items => (
+  
+  {props.data.length > 0 && props.data.map(items => (
     <Smurfs key={items.id} items={items}/> 
 
   ))}
@@ -36,4 +37,4 @@ const mapStateToProps = state => {
  };
 };
 
-export default connect(mapStateToProps, { fetchList, postList })(SmurfList);
+export default connect(mapStateToProps, { fetchList })(SmurfList);

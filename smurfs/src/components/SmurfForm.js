@@ -4,49 +4,57 @@ import { fetchList, postList } from '../actions/index';
 
 const SmurfForm = props => {
  const [input, setInput] = useState('')
+ const [age, setAge] = useState('')
+ const [height, setHeight] = useState('')
 
- useEffect(() => {
+ 
 
- },[])
+  // const changeHandler = event => {
+  //   setInput({
+  //   ...input,
+  //   [event.target.name]: event.target.value
+  //   })
+  
     
-    const changeHandler = event => {
-        setInput(event.target.value);
-        console.log('DATA:',props.data);
-     }
+    // const changeHandler = event => {
+    //     setInput(event.target.value);
+    //     console.log('DATA:',props.data);
+    //  }
     
     const addSmurfHandler = event => {
         event.preventDefault();
-        props.postList(input)
+        console.log('FORM',input, age , height);
+        // props.postList({name: input, age: age, height: height})
         setInput('')
+        setAge('')
+        setHeight('')
        }
  
 return (
- <form onSubmit={(event) => {
-    addSmurfHandler(event)
-  }}> 
+ <form onSubmit={addSmurfHandler}> 
   
   <input
   type='text'
   value={input}
   name='name'
   placeholder='..add name'
-  onChange={changeHandler} 
+  onChange={(e) => setInput(e.target.value)} 
   />  
 
 <input
   type='text'
-  value={input}
+  value={age}
   name='age'
   placeholder='..add age'
-  onChange={changeHandler} 
+  onChange={(e) => setAge(e.target.value)}  
   /> 
 
 <input
   type='text'
-  value={input}
+  value={height}
   name='height'
   placeholder='..add height'
-  onChange={changeHandler} 
+  onChange={(e) => setHeight(e.target.value)} 
   /> 
 
 

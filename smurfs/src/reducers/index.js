@@ -2,16 +2,7 @@ import React from 'react';
 import { FETCHING_DATA, FETCH_COMPLETE, FETCH_FAILURE, POSTING_DATA, POST_COMPLETE, POST_FAILURE } from '../actions/index'
 
 const initialState = {
- data: [
- 
-    {
-  name: 'Vanity',
-  age: 200,
-  height: '5cm',
-  id: 0   
- }
- 
-],
+ data: [],
  
 isFetching: false,
  error: '',
@@ -47,19 +38,10 @@ const reducer = (state=initialState, action) => {
      }
 
      case POSTING_DATA:
-     const newSmurf = {
-        name: 'Vanity',
-        age: 200,
-        height: '5cm',
-        id: Date.now()
-      
-
-     }
      
      return {
      ...state,
      isPosting: true,
-     data: [...state.data, newSmurf],
      error: ''
      
      }
