@@ -24,7 +24,7 @@ const SmurfForm = props => {
     const addSmurfHandler = event => {
         event.preventDefault();
         console.log('FORM',input, age , height);
-        // props.postList({name: input, age: age, height: height})
+        props.postList({name: input, age: age, height: height})
         setInput('')
         setAge('')
         setHeight('')
